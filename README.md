@@ -1,28 +1,11 @@
-# About Sanctum Auth Starter
+# About Token Middleware
 
-This is a laravel package that utilises `laravel/ui` and `laravel-sanctum` to create Basic Authetication classes for making REST APIs using [Laravel](https://laravel.com/). The following functionalities are made available:
+This is a laravel package for validating URLs with OTPs.
 
-- User registration
-- User login
-- Auto login after registration
-- Login throttling
-- Login 2FA (pending)
-- Social media login (pending)
-- Forgot password
-- Email verification
-- Resend email verification
-- Reset password
-- Change password
-- Change pin
-- Require pin middleware
-- Require token middleware (pending)
-- Change avatar (pending)
+- Change Token
+- Require token middleware
 - Notifications
-  - Welcome notification
-  - Email verification
-  - Login notification
-  - Password change notification
-  - Pin change notification
+  - Token change notification
 
 ## Requirements
 
@@ -31,11 +14,11 @@ This is a laravel package that utilises `laravel/ui` and `laravel-sanctum` to cr
 
 ## Steps To Install
 
-- `composer require ikechukwukalu/sanctumauthstarter`
+- `composer require ikechukwukalu/tokenmiddleware`
 - You will need a [queue](https://laravel.com/docs/9.x/queues#introduction) worker for the notifications. For a quick start set `QUEUE_CONNECTION=database` within your `.env` file.
 - Run `php artisan queue:table`, `php artisan migrate` and `php artisan queue:work --queue=high,default`
-- Add `pin` column to the `fillable` and `hidden` arrays within the `User` model class
-- Add `'require.pin' => \Ikechukwukalu\Sanctumauthstarter\Middleware\RequirePin::class` to the `$routeMiddleware` in `kernel.php`
+- Add `token` column to the `fillable` and `hidden` arrays within the `User` model class
+- Add `'require.token' => \Ikechukwukalu\Sanctumauthstarter\Middleware\RequireToken::class` to the `$routeMiddleware` in `kernel.php`
 - Run `php artisan serve`
 
 ## Tests
@@ -43,28 +26,16 @@ This is a laravel package that utilises `laravel/ui` and `laravel-sanctum` to cr
 It's recommended that you run the tests before you start adding your models and controllers.
 Make sure to keep your `database/factories/UserFactory.php` Class updated with your `users` table so that the Tests can continue to run successfully.
 
-### NOTE
-
-The passwords created within the `database/factories/UserFactory.php` Class must match the validation below:
-
-``` PHP
-'password' => ['required', 'string', 'max:16',
-                Password::min(8)
-                    ->letters()->mixedCase()
-                    ->numbers()->symbols()
-                    ->uncompromised(),
-```
-
 ### RUNNING TESTS
 
-- `php artisan vendor:publish --tag=sas-feature-tests`
+- `php artisan vendor:publish --tag=tm-feature-tests`
 - `php artisan serve`
 - `php artisan test`
 
 ## Reserved keywords for payloads
 
 - `_uuid`
-- `_pin`
+- `_token`
 - `expires`
 - `signature`
 
@@ -91,35 +62,31 @@ Please visit [scribe](https://scribe.knuckles.wtf/) for more details.
 
 ## Publish Controllers
 
-- `php artisan vendor:publish --tag=sas-controllers`
+- `php artisan vendor:publish --tag=tm-controllers`
 
 ## Publish Models
 
-- `php artisan vendor:publish --tag=sas-models`
+- `php artisan vendor:publish --tag=tm-models`
 
 ## Publish Middleware
 
-- `php artisan vendor:publish --tag=sas-middleware`
+- `php artisan vendor:publish --tag=tm-middleware`
 
 ## Publish Rules
 
-- `php artisan vendor:publish --tag=sas-rules`
-
-## Publish Views
-
-- `php artisan vendor:publish --tag=sas-views`
+- `php artisan vendor:publish --tag=tm-rules`
 
 ## Publish Routes
 
-- `php artisan vendor:publish --tag=sas-routes`
+- `php artisan vendor:publish --tag=tm-routes`
 
 ## Publish Lang
 
-- `php artisan vendor:publish --tag=sas-lang`
+- `php artisan vendor:publish --tag=tm-lang`
 
 ## Publish Config
 
-- `php artisan vendor:publish --tag=sas-config`
+- `php artisan vendor:publish --tag=tm-config`
 
 ## Publish Laravel Email Notification Blade
 
