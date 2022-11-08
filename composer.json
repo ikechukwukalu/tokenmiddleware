@@ -1,0 +1,36 @@
+{
+    "name": "ikechukwukalu/tokenmiddleware",
+    "description": "Laravel token middleware",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "ikechukwukalu"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "laravel/framework": "^9.19",
+        "hisorange/browser-detect": "dev-stable",
+        "knuckleswtf/scribe": "dev-master"
+    },
+    "autoload": {
+        "psr-4": {
+            "Ikechukwukalu\\Tokenmiddleware\\": "src/",
+            "Ikechukwukalu\\Tokenmiddleware\\Controllers\\": "src/Controllers/",
+            "Ikechukwukalu\\Tokenmiddleware\\Rule\\": "src/Rule/",
+            "Ikechukwukalu\\Tokenmiddleware\\Model\\": "src/Models/",
+            "Ikechukwukalu\\Tokenmiddleware\\Middleware\\": "src/Middleware/",
+            "Ikechukwukalu\\Tokenmiddleware\\Notifications\\": "src/Notifications/",
+            "Ikechukwukalu\\Tokenmiddleware\\Tests\\Feature\\": "src/Tests/Feature/",
+            "Ikechukwukalu\\Tokenmiddleware\\Tests\\Unit\\": "src/Tests/Unit/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Ikechukwukalu\\Tokenmiddleware\\TokenmiddlewareServiceProvider"
+            ]
+        }
+    }
+}
