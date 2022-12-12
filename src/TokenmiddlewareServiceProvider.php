@@ -59,6 +59,8 @@ class TokenmiddlewareServiceProvider extends ServiceProvider
         );
 
         $this->app->make(\Ikechukwukalu\Tokenmiddleware\Controllers\TokenController::class);
+
+        // Controller for Sample Book APIs
         $this->app->make(\Ikechukwukalu\Tokenmiddleware\Controllers\NovelController::class);
     }
 }

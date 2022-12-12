@@ -194,8 +194,7 @@ class TokenController extends Controller
         return $this->httpJsonResponse(
             trans('tokenmiddleware::general.fail'), 401,
             [
-                'message' => trans('tokenmiddleware::token.terminated'),
-                'url' => $url
+                'message' => trans('tokenmiddleware::token.terminated')
             ]
         );
     }
